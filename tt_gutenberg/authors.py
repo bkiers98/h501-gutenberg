@@ -7,7 +7,7 @@ def list_authors(by_languages=True, alias=True):
 
     df_author_translations = get_data()
     df_aliases = df_author_translations.groupby('alias')[['total_languages']].sum().reset_index()
-    alias_list = df_aliases['alias'].sort_values(ascending=False) \
-                                    .to_list()
+    alias_list = df_aliases.sort_values(by='total_languages', ascending=False)['alias'] \
+                            .to_list()
     return alias_list
     
