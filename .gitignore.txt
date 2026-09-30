@@ -3,3 +3,10 @@
 
 # data
 *.csv
+
+# notebooks
+*scratch.ipynb
+# *.ipynb
+
+# project
+.venv
