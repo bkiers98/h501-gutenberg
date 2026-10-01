@@ -14,8 +14,8 @@ def get_data():
     df_author_works = pd.merge(df_metadata, df_authors, \
                                 on='gutenberg_author_id', \
                                 how='left')
-    df_author_works.rename(columns={'alias': 'author_alias', \
-                                    'language': 'total_languages'}, \
-                                    inplace=True)
+    # df_author_works.rename(columns={'alias': 'author_alias', \
+    #                                 'language': 'total_languages'}, \
+    #                                 inplace=True)
 
     return df_author_works
