@@ -9,16 +9,11 @@ def list_authors(by_languages=True, alias=True):
     of translations associated with that alias. 
     '''
     df_author_translations = get_data()
-    print(df_author_translations.info())
     df_aliases = df_author_translations.groupby('author_alias') \
                                         [['language']] \
                                         .count() \
                                         .reset_index() \
-                                        .rename(
-                                            {'language' : 'total_languages'}
-                                            )
-
-    print(df_aliases)
+                                        .rename(columns={'language' : 'total_languages'})
     
     alias_list = df_aliases.sort_values(by='total_languages', ascending=False) \
                                         ['author_alias'] \
