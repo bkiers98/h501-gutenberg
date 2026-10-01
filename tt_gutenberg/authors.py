@@ -5,12 +5,17 @@ from tt_gutenberg.transform import get_data
 
 def list_authors(by_languages=True, alias=True):
     '''
-
+    This function returns a list of author aliases sorted by the number
+    of translations associated with that alias. 
     '''
     df_author_translations = get_data()
-    df_aliases = df_author_translations.groupby('author_alias')[['total_languages']].count().reset_index()
+    df_aliases = df_author_translations.groupby('author_alias') \
+                                        [['total_languages']] \
+                                        .count() \
+                                        .reset_index()
     
-    alias_list = df_aliases.sort_values(by='total_languages', ascending=False)['author_alias'] \
-                            .to_list()
+    alias_list = df_aliases.sort_values(by='total_languages', ascending=False) \
+                                        ['author_alias'] \
+                                        .to_list()
     return alias_list
     
