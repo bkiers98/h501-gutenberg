@@ -8,8 +8,11 @@ def get_data():
     '''
     
     '''
-    df_gutenberg_authors = pd.read_csv([file for file in DATA if 'gutenberg_authors.csv' in file][0])
-    df_gutenberg_metadata = pd.read_csv([file for file in DATA if 'gutenberg_metadata.csv' in file][0])
+    df_list = [file for file in DATA]
+    df_gutenberg_authors = pd.read_csv([file for file in df_list if 'gutenberg_authors.csv' in file][0])
+    df_gutenberg_metadata = pd.read_csv([file for file in df_list if 'gutenberg_metadata.csv' in file][0])
+    # df_author_works = pd.merge(df_list[0], df_list[1], on='gutenberg_author_id', \
+                               # how='outer')
 
     df_author_works = pd.merge(df_gutenberg_metadata, df_gutenberg_authors, \
                                 on='gutenberg_author_id', \
